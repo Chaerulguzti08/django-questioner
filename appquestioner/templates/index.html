@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>API DOCUMENTATION</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <style>
+      /* Custom CSS for Sidebar */
+      .sidebar {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 100;
+        padding: 48px 0;
+        overflow-x: hidden;
+        overflow-y: auto;
+        background-color: #f8f9fa;
+      }
+
+      .sidebar .nav-link {
+        font-weight: 500;
+      }
+
+      /* Custom CSS for Content */
+      .content {
+        margin-left: 240px;
+        padding: 20px;
+      }
+
+      /* Header Styles */
+      header {
+        background-color: #333;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+      }
+
+      h2 {
+        margin-top: 40px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+      }
+
+      th {
+        background-color: #f5f5f5;
+      }
+
+      /* Code Block Styles */
+      pre {
+        background-color: #f5f5f5;
+        padding: 10px;
+        border-radius: 4px;
+        overflow-x: auto;
+      }
+
+      /* Response Example Styles */
+      .response-example {
+        margin-top: 20px;
+        border: 1px solid #ddd;
+        padding: 10px;
+        border-radius: 4px;
+      }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        // Hide all sections except the first one
+        $(".content > div:not(:first-child)").hide();
+
+        // Handle sidebar link click event
+        $(".sidebar .nav-link").click(function (e) {
+          e.preventDefault();
+
+          // Remove active class from all links
+          $(".sidebar .nav-link").removeClass("active");
+
+          // Add active class to the clicked link
+          $(this).addClass("active");
+
+          // Hide all sections
+          $(".content > div").hide();
+
+          // Show the corresponding section
+          var target = $(this).attr("href");
+          $(target).show();
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <nav class="navbar navbar-light">
+        <a class="navbar-brand" href="#">Documentation</a>
+      </nav>
+      <nav class="nav flex-column">
+        <a class="nav-link" href="#section1">Project</a>
+        <a class="nav-link" href="#section2">Question</a>
+        <a class="nav-link" href="#section3">Respondent</a>
+      </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content">
+      <div id="section1">
+        <h2>API Endpoint</h2>
+        <pre><code>GET https://prupa.id/dem/questioner/api/project/</code></pre>
+
+        <h3>Description</h3>
+        <p>This endpoint returns a list of guest.</p>
+
+        <h4>Headers</h4>
+        <table>
+          <tr>
+            <th>Type</th>
+            <th>Description</th>
+          </tr>
+          <tr>
+            <td>Authorization</td>
+            <td><p style="color: red">None</p></td>
+          </tr>
+        </table>
+
+        <h4>Request Example</h4>
+        <pre><code>GET https://prupa.id/dem/questioner/api/project/</code></pre>
+
+        <h3>Response Example</h3>
+        <pre class="response-example"><code>
+          
+          {
+            "Success": true,
+            "Message": "success",
+            "data": [
+                {
+                    "id": 1,
+                    "name": "Test",
+                    "location": "Test",
+                    "date": "2023-12-02",
+                    "created_by": "admin",
+                    "updated_by": "admin",
+                    "created_at": "2023-12-02T06:06:47Z",
+                    "updated_at": "2023-12-02T06:06:47Z"
+                },
+                {
+                    "id": 2,
+                    "name": "Project 2",
+                    "location": "Bandung",
+                    "date": "2023-12-02",
+                    "created_by": "admin",
+                    "updated_by": "admin",
+                    "created_at": "2023-12-02T06:18:35Z",
+                    "updated_at": "2023-12-02T06:18:35Z"
+                }
+            ]
+          }
+        </code></pre>
+
+        <h4>Request Get Detail Data</h4>
+        <pre><code>GET https://prupa.id/dem/questioner/api/project/1/</code></pre>
+
+        <h3>Response Example</h3>
+        <pre class="response-example"><code>
+          
+          {
+            "Success": true,
+            "Message": "success",
+            "data": [
+                {
+                    "id": 1,
+                    "name": "Test",
+                    "location": "Test",
+                    "date": "2023-12-02",
+                    "created_by": "admin",
+                    "updated_by": "admin",
+                    "created_at": "2023-12-02T06:06:47Z",
+                    "updated_at": "2023-12-02T06:06:47Z"
+                },
+            ]
+          }
+        </code></pre>
+      </div>
+      <hr />
+      <div id="section2">
+        <h2>API Endpoint</h2>
+        <pre><code>GET https://prupa.id/dem/questioner/api/question/1/</code></pre>
+        <h3>Description</h3>
+        <p>This endpoint for send request get list question by id project</p>
+
+        <h4>Headers</h4>
+        <table>
+          <tr>
+            <th>Type</th>
+            <th>Description</th>
+          </tr>
+          <tr>
+            <td>Authorization</td>
+            <td><p style="color: red">None</p></td>
+          </tr>
+        </table>
+        <h4>Request Example</h4>
+        <pre><code>GET https://prupa.id/dem/questioner/api/question/1/</code></pre>
+
+        <h3>Response Example</h3>
+        <pre class="response-example"><code>
+          {
+            "Success": true,
+            "Message": "success",
+            "data": [
+                {
+                    "id": 1,
+                    "project_name": "Test",
+                    "project_id": 1,
+                    "type": "1",
+                    "question": "Test?",
+                    "created_by": "admin",
+                    "updated_by": "admin",
+                    "created_at": "2023-12-02T06:06:57Z",
+                    "updated_at": "2023-12-02T06:06:57Z"
+                },
+                {
+                    "id": 2,
+                    "project_name": "Test",
+                    "project_id": 1,
+                    "type": "1",
+                    "question": "Test Lagi?",
+                    "created_by": "admin",
+                    "updated_by": "admin",
+                    "created_at": "2023-12-02T06:18:50Z",
+                    "updated_at": "2023-12-02T06:18:50Z"
+                }
+            ]
+          }
+        </code></pre>
+
+        <h4>Request Example Get Detail by Id</h4>
+        <pre><code>GET https://prupa.id/dem/questioner/api/question/detail/1/</code></pre>
+
+        <h3>Description</h3>
+        <p>This endpoint for send request get list question by id question</p>
+
+        <h3>Response Example</h3>
+        <pre class="response-example"><code>
+          {
+            "Success": true,
+            "Message": "success",
+            "data": [
+                {
+                    "id": 1,
+                    "project_name": "Test",
+                    "project_id": 1,
+                    "type": "1",
+                    "question": "Test?",
+                    "created_by": "admin",
+                    "updated_by": "admin",
+                    "created_at": "2023-12-02T06:06:57Z",
+                    "updated_at": "2023-12-02T06:06:57Z"
+                },
+            ]
+          }
+        </code></pre>
+      </div>
+      <hr />
+
+      <div id="section3">
+        <h2>API Endpoint</h2>
+        <pre><code>GET https://prupa.id/dem/questioner/api/respondents-get/</code></pre>
+        <h3>Description</h3>
+        <p>This endpoint for send request get list respondent</p>
+
+        <h4>Headers</h4>
+        <table>
+          <tr>
+            <th>Type</th>
+            <th>Description</th>
+          </tr>
+          <tr>
+            <td>Authorization</td>
+            <td><p style="color: red">None</p></td>
+          </tr>
+        </table>
+        <h4>Request Example</h4>
+        <pre><code>GET https://prupa.id/dem/questioner/api/respondents-get/</code></pre>
+
+        <h3>Response Example</h3>
+        <pre class="response-example"><code>
+          {
+            "Success": true,
+            "Message": "success",
+            "data": [
+                {
+                    "id": 1,
+                    "name": "rul",
+                    "phone_number": "908",
+                    "email": "rul@gmail.com",
+                    "froms": "indo"
+                }
+            ]
+          }
+        </code></pre>
+      </div>
+      <hr />
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>
